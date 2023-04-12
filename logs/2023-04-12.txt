@@ -1,0 +1,7 @@
+2023-04-12 19:08:01,255 - INFO - All G temperature temp 20° mintemp 10° humidity 1%
+2023-04-12 19:08:30,021 - INFO - All G temperature temp 20° mintemp 10° humidity 1%
+2023-04-12 19:09:30,023 - INFO - All G temperature temp 20° mintemp 10° humidity 1%
+2023-04-12 19:10:30,028 - INFO - All G temperature temp 20° mintemp 10° humidity 1%
+2023-04-12 19:11:30,034 - INFO - All G temperature temp 20° mintemp 10° humidity 1%
+2023-04-12 19:12:30,037 - INFO - All G temperature temp 20° mintemp 10° humidity 1%
+2023-04-12 19:13:30,043 - INFO - All G temperature temp 20° mintemp 10° humidity 1%
