@@ -4,30 +4,16 @@ from time import sleep
 #import seeed_dht
 from datetime import datetime
 from grove.gpio import GPIO
-import pymysql
 from groverelay import GroveRelay
+import helpers
 import logging # flexible event logging
 
-#setup logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(f'{LOGDIR}\{datetime.date(datetime.now())}log.txt'),
-        logging.StreamHandler()
-    ]
-)
 
 def main():
     #sensor = seeed_dht.DHT("11", 12)
     relay = GroveRelay(5)
-   
- # Connect to the database.
-    conn = pymysql.connect(db=DATABASE,
-        user=USER,
-        passwd=PASSWD,
-        host=HOST)
-    c = conn.cursor()
+
+    conn, c = helpers.create_db_cursor()
       
     while True:
         sleep(1)
@@ -36,30 +22,15 @@ def main():
         humidity = 20 #temporarily hard code values for testing
         temp = 20  #temporarily hard code values for testing
 
-        c.execute(f"SELECT value from config where id='MorningStartTime';")
-        data = c.fetchone()
-        MorningStartTime = int(data[0])
-        c.execute(f"SELECT value from config where id='MorningEndTime';")
-        data = c.fetchone()
-        MorningEndTime = int(data[0])
-        c.execute(f"SELECT value from config where id='EveningStartTime';")
-        data = c.fetchone()
-        EveningStartTime = int(data[0])
-        c.execute(f"SELECT value from config where id='EveningEndTime';")
-        data = c.fetchone()
-        EveningEndTime = int(data[0])
-        c.execute(f"SELECT value from config where id='MorningTargetTemp';")  
-        data = c.fetchone()
-        MorningTargetTemp = int(data[0])
-        c.execute(f"SELECT value from config where id='EveningTargetTemp';")
-        data = c.fetchone()
-        EveningTargetTemp = int(data[0])
-        c.execute(f"SELECT value from config where id='MinTempThreshold';")
-        data = c.fetchone()
-        MinTempThreshold = int(data[0])
-        c.execute(f"SELECT value from config where id='override';")
-        data = c.fetchone()
-        override = data[0]
+        config_dict = helpers.get_config()
+        MorningStartTime = int(config_dict["MorningStartTime"])
+        MorningEndTime = int(config_dict["MorningEndTime"])
+        EveningStartTime = int(config_dict["EveningStartTime"])
+        EveningEndTime = int(config_dict["EveningEndTime"])
+        MorningTargetTemp = int(config_dict["MorningTargetTemp"])
+        EveningTargetTemp = int(config_dict["EveningTargetTemp"])
+        MinTempThreshold = int(config_dict["MinTempThreshold"])
+        override = config_dict["override"]
       
         if (now.hour >= MorningStartTime and now.hour < MorningEndTime):
             mintemp = MorningTargetTemp

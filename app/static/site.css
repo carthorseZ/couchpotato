@@ -1,27 +1,33 @@
-.navbar {
-    background-color: lightslategray;
-    font-size: 1em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: white;
-    padding: 8px 5px 8px 5px;
+.rounded {
+    border-radius: 2rem !important;         
+    width: 67%;
 }
-
-.navbar a {
-    text-decoration: none;
-    color: inherit;
+.box {
+    width: 300px;
 }
-
-.navbar-brand {
-    font-size: 1.2em;
-    font-weight: 600;
+p, h1, .btn {
+    font-family: 'Orbitron', sans-serif;
 }
-
-.navbar-item {
-    font-variant: small-caps;
-    margin-left: 30px;
+.btn {
+    font-family: 'Dancing Script', cursive;
+    width: 200px;
 }
-
-.body-content {
-    padding: 5px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.warm{
+    background-color: lightsalmon;
+}
+.hot{
+    background-color: red;  
+}
+.cool{
+    background-color: lavender;  
+}
+.cold{
+    background-color: lightblue;  
+}
+a {
+    text-decoration: none;           
+}
+output{
+    font-size: 1.5rem;
+    margin-left: 8px;
 }

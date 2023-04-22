@@ -2,28 +2,14 @@
 from config import *
 from time import sleep
 from datetime import datetime
-import pymysql
 from groverelay import GroveRelay
-import logging # flexible event logging
-
-#setup logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(f'{LOGDIR}\{datetime.date(datetime.now())}log.txt'),
-        logging.StreamHandler()
-    ]
-)
+import logging 
+import helpers
 
 def main():
    
- # Connect to the database.
-    conn = pymysql.connect(db=DATABASE,
-        user=USER,
-        passwd=PASSWD,
-        host=HOST)
-    c = conn.cursor()
+    # Connect to the database.
+    conn, c = helpers.create_db_cursor()
         
     relay = GroveRelay(5)
 
