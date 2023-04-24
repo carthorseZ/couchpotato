@@ -18,10 +18,10 @@ build/
 docs/_build/
 .vscode
 *log.txt
-
-# Coverage reports
 htmlcov/
 .coverage
 .coverage.*
 *,cover
 app/config.py
+logs/*
+app/RPi
