@@ -24,7 +24,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(f'{LOGDIR}\{datetime.date(datetime.now())}log.txt'),
+        logging.FileHandler(f'{LOGDIR}{datetime.date(datetime.now())}.txt'),
         logging.StreamHandler()
     ]
 )
